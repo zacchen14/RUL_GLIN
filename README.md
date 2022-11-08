@@ -1,2 +1,3 @@
 # RUL-Transformer
-Remaining useful life prediction based on Transformer
+Consistency Transformer: Remaining useful life prediction
+The project will updated soon. 
