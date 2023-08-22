@@ -5,7 +5,7 @@ Under a window-manner end-to-end paradigm, data-driven RUL prediction methods su
 
 We propose GLIN [[paper]](https://doi.org/10.1016/j.engappai.2023.106956) to integrate global and local information. 
 
-![image](https://github.com/zacchen14/RUL_GLIN/blob/main/pic/GLIN.png)
+![image](https://github.com/zacchen14/RUL_GLIN/blob/main/pic/GLIN_pipeline.png)
 
 ## Get Started
 1. Install the required packages.
