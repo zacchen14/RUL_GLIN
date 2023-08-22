@@ -14,4 +14,4 @@ We propose GLIN [[paper]](https://doi.org/10.1016/j.engappai.2023.106956) to int
 
 3. Train the model.
 
-   `$ python main.py --train_dataset FD001 --test_dataset FD001 --epochs 100 --save_model`
+   `$ python main.py --train_dataset FD001 --test_dataset FD001 --epochs 100`
