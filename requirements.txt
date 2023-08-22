@@ -1,0 +1,10 @@
+einops==0.4.1
+matplotlib==3.5.1
+mkl==2023.2.0
+numpy==1.21.2
+pandas==1.4.1
+rotary_embedding_torch==0.2.7
+scipy==1.7.3
+seaborn==0.11.2
+torch==1.10.2
+tqdm==4.64.0
