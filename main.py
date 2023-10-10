@@ -40,10 +40,10 @@ def collate_fn_old(batch_data):
     texta, textb, label = list(zip(*batch_data))
 
     texta = list(texta)
-    # texta.sort(key=lambda x: len(x), reverse=True)  # TODO: why need to sort?
+    # texta.sort(key=lambda x: len(x), reverse=True)
 
     texta = [torch.flip(t, dims=[0]) for t in texta]  # texta: list, t size is (L, D)
-    texta = pad_sequence(texta, batch_first=True, padding_value=PAD_IDX)  # tensor
+    texta = pad_sequence(texta, batch_first=True, padding_value=PAD_IDX)  
     texta = torch.flip(texta, dims=[1])
 
     textb = torch.stack(textb)
@@ -66,13 +66,13 @@ def collate_fn(batch_data):
     texta, texta2, textb, label = list(zip(*batch_data))
 
     texta = list(texta)
-    # texta.sort(key=lambda x: len(x), reverse=True)  # TODO: why need to sort?
+    # texta.sort(key=lambda x: len(x), reverse=True)  
     texta = [torch.flip(t, dims=[0]) for t in texta]  # texta: list, t size is (L, D)
     texta = pad_sequence(texta, batch_first=True, padding_value=PAD_IDX)  # tensor
     texta = torch.flip(texta, dims=[1])
 
     texta2 = list(texta2)
-    # texta.sort(key=lambda x: len(x), reverse=True)  # TODO: why need to sort?
+    # texta.sort(key=lambda x: len(x), reverse=True)  
     texta2 = [torch.flip(t, dims=[0]) for t in texta2]  # texta: list, t size is (L, D)
     texta2 = pad_sequence(texta2, batch_first=True, padding_value=PAD_IDX)  # tensor
     texta2 = torch.flip(texta2, dims=[1])
@@ -127,20 +127,6 @@ def train(model, train_loader, test_ds, optimizer, criterion,
                                                 memory_key_padding_mask=src_padding_mask,
                                                 need_ass_dis=True)
 
-            """if exists(max_life):
-                prior_dis = torch.stack(
-                    [prior_association(attn_weight.size(-2), attn_weight.size(-1),
-                                       attn_weight.size(-1) - batch_y[i].cpu().numpy() * max_life - 30, 1.0)
-                     for i in range(attn_weight.size(0))]
-                ).to(device)
-            else:
-                prior_dis = torch.stack(
-                    [prior_association(attn_weight.size(-2), attn_weight.size(-1),
-                                       attn_weight.size(-1) - batch_y[i].cpu().numpy() - 30, 1.0)
-                     for i in range(attn_weight.size(0))]
-                ).to(device)"""
-
-            # loss_d = F.kl_div(attn_weight.log(), prior_dis) + F.kl_div(prior_dis.log(), attn_weight)
             loss_d = 0
             for i in range(empirical.size(0)):
                 loss_d += js_div(empirical[i], prior[i])  # do not need log anymore
